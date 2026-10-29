@@ -1,0 +1,6 @@
+a neuron computes a weighted sum of inputs plus a bias.
+a neuron takes a weighted sum of inputs and adds a bias.
+neurons combine inputs with weights and a bias term.
+relu introduces non linearity in a network.
+relu adds non linearity to a network.
+relu zeros negative values in a network.

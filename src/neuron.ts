@@ -1,5 +1,5 @@
 import Tensor from "./tensor";
-import { sigmoid } from "./types";
+import { sigmoid } from "./types.ts";
 
 export class Neuron {
     constructor(

@@ -1,5 +1,5 @@
 import Tensor from "./tensor";
-import { Parameter } from "./types";
+import type { Parameter } from "./types.ts";
 
 export class Adam {
     private t = 0;

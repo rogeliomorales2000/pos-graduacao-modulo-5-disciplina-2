@@ -1,36 +1,44 @@
-import Tensor from "./tensor";
-import { TreinableMLP } from "./treinable-mlp";
+import { TextDataset } from "./text-dataset";
+import { defaultGptConfig, TinyGPT } from "./tiny-gpt";
+import {
+  trainGpt,
+  generate,
+} from "./train-gpt";
 
-const net = new TreinableMLP(2, 4, 1, 0.1, 42);
+const corpus = `User: hi
+Bot: hello there
+User: how are you
+Bot: i am well
+User: bye
+Bot: see you
+`;
 
-const dataset = [
-    { inputs: Tensor.fromMatrix([[0, 0]]), target: Tensor.fromMatrix([[0]]) },
-    { inputs: Tensor.fromMatrix([[0, 1]]), target: Tensor.fromMatrix([[1]]) },
-    { inputs: Tensor.fromMatrix([[1, 0]]), target: Tensor.fromMatrix([[1]]) },
-    { inputs: Tensor.fromMatrix([[1, 1]]), target: Tensor.fromMatrix([[0]]) }
-];
+const contextSize = 32;
+const ds = TextDataset.fromText(corpus, contextSize);
+console.log(ds.describe());
+console.log("");
 
-for (let epoch = 0; epoch < 200; epoch++) {
-    let totalLoss = 0;
+const model = new TinyGPT({
+  ...defaultGptConfig(ds.tokenizer.vocabSize),
+  contextSize,
+  dim: 32,
+});
+console.log(model.summary());
+console.log("\nQuick overfit on the toy dialogue…\n");
 
-    for (const example of dataset) {
-        totalLoss += net.trainStep(example);
-    }
+trainGpt(model, ds.windows("train"), {
+  epochs: 40,
+  learningRate: 0.01,
+  logEvery: 10,
+});
 
-    const averageLoss = totalLoss / dataset.length;
+const sample = generate(model, ds.tokenizer, "User: hi\nBot:", {
+  maxNewTokens: 40,
+  temperature: 0.5,
+});
+console.log("\nSample generation:");
+console.log("----------");
+console.log(sample);
+console.log("----------");
 
-    if (epoch % 20 === 0 || epoch === 199) {
-        console.log(`Epoch ${epoch} | loss = ${averageLoss.toFixed(6)}`);
-    }
-}
-
-const pred0 = net.forward(Tensor.fromMatrix([[0, 0]])).toArray();
-const pred1 = net.forward(Tensor.fromMatrix([[0, 1]])).toArray();
-const pred2 = net.forward(Tensor.fromMatrix([[1, 0]])).toArray();
-const pred3 = net.forward(Tensor.fromMatrix([[1, 1]])).toArray();
-
-console.log("Predições finais:");
-console.log("[0,0] =>", pred0);
-console.log("[0,1] =>", pred1);
-console.log("[1,0] =>", pred2);
-console.log("[1,1] =>", pred3);
+console.log("\nNext: ship train / chat / inspect CLIs — the mini ChatGPT product.");

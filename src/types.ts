@@ -36,6 +36,12 @@ export type Parameter = {
     grad: number | Tensor
 };
 
+/** Janela de treino next-token: entrada e alvo deslocado em 1. */
+export type Window = {
+    input: number[],
+    target: number[]
+};
+
 
 export type Nullable < T > = T | null
 

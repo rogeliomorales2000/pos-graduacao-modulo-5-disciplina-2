@@ -1,0 +1,6 @@
+a causal mask blocks looking at future tokens during training.
+causal masking stops a token seeing future tokens while training.
+training uses a causal mask so future tokens stay hidden.
+attention lets each token look at other tokens in the context window.
+attention mixes information across tokens in the sequence.
+attention is how tokens share context with each other.

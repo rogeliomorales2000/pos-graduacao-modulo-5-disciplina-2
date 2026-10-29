@@ -1,8 +1,8 @@
 import { pathToFileURL } from "node:url";
-import { ImageDataset } from "../src/dataset";
-import { defaultCnnConfig, TinyCNN } from "../src/tiny-cnn";
-import trainingLoop from "../src/training-loop";
-import { saveModel } from "../src/io";
+import { ImageDataset } from "../../src/dataset";
+import { defaultCnnConfig, TinyCNN } from "../../src/tiny-cnn";
+import trainingLoop from "../../src/training-loop";
+import { saveModel } from "../../src/io";
 
 export async function trainCatvsdog(
    options:{

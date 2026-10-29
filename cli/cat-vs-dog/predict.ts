@@ -1,5 +1,5 @@
-import { loadModel } from "../src/io";
-import { predictCatVsDog } from "../src/train";
+import { loadModel } from "../../src/io";
+import { predictCatVsDog } from "../../src/train";
 
 const model = loadModel("model/cats-vs-dog.json");
 const imagePath = process.argv[2];

@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "tsx src/index.ts",
-    "build": "tsc --noEmit"
+    "build": "tsc --noEmit",
+    "chat": "tsx cli/mini-gpt/chat.ts",
+    "generate": "tsx cli/mini-gpt/generate.ts",
+    "train:mini-gpt": "tsx cli/mini-gpt/train.ts"
   },
   "dependencies": {
     "heic-decode": "^1.0.0",

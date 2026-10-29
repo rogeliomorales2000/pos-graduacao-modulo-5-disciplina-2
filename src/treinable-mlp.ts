@@ -5,7 +5,7 @@ import { Example } from "./example";
 import { SGD } from "./sgd";
 import Tensor from "./tensor";
 import { randomMatrix } from "./utils";
-import { Parameter } from "./types";
+import type { Parameter } from "./types.ts";
 import { Adam } from "./adam";
 
 // MPL: Multi Layer Perceptron

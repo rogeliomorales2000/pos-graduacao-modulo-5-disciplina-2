@@ -1,5 +1,5 @@
 import Tensor from "./tensor";
-import type { Parameter } from "./types";
+import type { Parameter } from "./types.ts";
 
 export interface Conv2DOptions {
     stride?: number;

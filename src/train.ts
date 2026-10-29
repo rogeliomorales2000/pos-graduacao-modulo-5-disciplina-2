@@ -1,5 +1,6 @@
 import { pathToFileURL } from "node:url";
 import { ImageDataset } from "./dataset";
+import { loadImageAsTensor } from "./imagem-loader";
 import { defaultCnnConfig, TinyCNN } from "./tiny-cnn";
 import trainingLoop from "./training-loop";
 import { saveModel } from "./io";
@@ -36,6 +37,21 @@ export async function trainCatvsdog(
 
     }
     return model 
+}
+
+/** Classifica uma imagem em "cats" ou "dogs" usando um modelo já treinado. */
+export async function predictCatVsDog(
+    model: TinyCNN,
+    imagePath: string,
+    imageSize: number = model.config.inputHeight,
+): Promise<{ className: "cats" | "dogs"; dogProbability: number }> {
+    const image = await loadImageAsTensor(imagePath, imageSize);
+    const prediction = model.forward(image);
+    const dogProbability = prediction.get(0, 0);
+    return {
+        className: dogProbability >= 0.5 ? "dogs" : "cats",
+        dogProbability,
+    };
 }
 
 async function main() {

@@ -3,9 +3,9 @@ import { Conv2D } from "./Conv2D";
 import { Dense } from "./dense";
 import { RELU, Sigmoid } from "./activation";
 import { BinaryCrossEntropy } from "./bce";
-import { MaxPool2D } from "./maxPool2x2Window";
+import { MaxPool2D } from "./maxPool2x2Window.ts";
 import { randomMatrix } from "./utils";
-import type { Parameter } from "./types";
+import type { Parameter } from "./types.ts";
 
 export interface CnnConfig {
 inChannels: number;

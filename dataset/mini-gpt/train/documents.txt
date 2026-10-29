@@ -1,0 +1,26 @@
+acme allows remote work from home up to three days per week.
+acme permits up to three remote days each week.
+staff may work from home three days per week at acme.
+acme core office days are tuesday and thursday.
+acme asks people in the office on tuesday and thursday.
+
+the river bridge opens on monday after two years of repair.
+the river bridge will open monday when repairs finish.
+monday is when the river bridge opens after repair.
+the bridge project cost forty million dollars.
+the bridge cost forty million dollars to build.
+forty million dollars was spent on the bridge project.
+
+a causal mask blocks looking at future tokens during training.
+causal masking stops a token seeing future tokens while training.
+training uses a causal mask so future tokens stay hidden.
+attention lets each token look at other tokens in the context window.
+attention mixes information across tokens in the sequence.
+attention is how tokens share context with each other.
+
+a neuron computes a weighted sum of inputs plus a bias.
+a neuron takes a weighted sum of inputs and adds a bias.
+neurons combine inputs with weights and a bias term.
+relu introduces non linearity in a network.
+relu adds non linearity to a network.
+relu zeros negative values in a network.
